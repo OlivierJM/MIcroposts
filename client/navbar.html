@@ -16,11 +16,16 @@
                     <li><a href="{{pathFor 'about'}}">About</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
+                  {{#if currentUser}}
+                    <li><a href="profile">Edit Profile</a></li>
+                    <li><a href="sign-out">Sign Out</a></li>
+                  {{else}}
+                    <li><a href="sign-in">Sign In</a></li>
+                    <li><a href="sign-up">Join</a></li>
+                  {{/if}}
 
-                        <li><a href="sign-in">Sign in</a></li>
-                        <li><a href="sign-up"></a></li>
-                        <li><a href="sign-out"></a></li>
-                        <li><a href="profile">Edit Profile</a></li>
+
+
                         <li><a href="profile"></a></li>
 
                 </ul>
