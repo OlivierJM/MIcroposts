@@ -1,0 +1,26 @@
+/* CSS declarations go here
+
+#profile-picture {
+    width: 100%;
+    padding-bottom: 2em;
+}
+
+
+
+.post:last-child {
+    border: 0;
+}
+*/
+img{
+  width: 100%;
+}
+.post {
+    margin-top: 3rem;
+    border-bottom: solid gray 0.2em;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-bottom: #ccc solid 1px;
+}
+.post:last-child{
+  border:0;
+}
