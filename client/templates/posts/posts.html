@@ -1,8 +1,10 @@
 <template name='posts'>
+  {{#if currentUser}}
     <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#postModal">
           Say Something
         </button>
+        {{/if}}
 
         <!-- Modal -->
         <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="myPostModalLabel">
@@ -10,14 +12,14 @@
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myPostModalLabel">Modal title</h4>
+                <h4 class="modal-title" id="myPostModalLabel">Create A Post</h4>
               </div>
               <div class="modal-body">
-                Hi from the Modal
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+              {{#autoForm collection='Posts' id='insertPostForm' type='insert'}}
+              {{> afQuickField name='body' rows=4}}
+              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              {{/autoForm}}
               </div>
             </div>
           </div>
@@ -36,40 +38,23 @@
             </p>
           </div>
         </div>
-
+        {{#each posts}}
         <div class="row post">
           <div class="col-md-1">
-            <img src="img/photo.png" alt="profile-picture" />
+            <img src="{{getProfileImg userId}}" alt="profile-picture" />
           </div>
           <div class="col-md-11">
-            <small>Posted by Oliver Jm on the 27th of March 1993</small>
+            <small>Posted by {{username}} on the {{createdAt}}</small>
             <p>
-              This is the users post
+              {{body}}
             </p>
           </div>
         </div>
-        <div class="row post">
-          <div class="col-md-1">
-            <img src="img/photo.png" alt="profile-picture" />
-          </div>
-          <div class="col-md-11">
-            <small>Posted by Oliver Jm on the 27th of March 1993</small>
-            <p>
-              This is the users post
-            </p>
-          </div>
-        </div>
-        <div class="row post">
-          <div class="col-md-1">
-            <img src="img/photo.png" alt="profile-picture" />
-          </div>
-          <div class="col-md-11">
-            <small>Posted by Oliver Jm on the 27-03-1993</small>
-            <p>
-              This is the users post
-            </p>
-          </div>
-        </div>
+        {{else}}
+        <p>
+          No Posts
+        </p>
+        {{/each}}
 
 
 </template>
